@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# Usage:
+# keepalive.sh - slow play of typed commands to keep session alive
 #
 # Install ->		sudo dnf install evemu
 # Find Device ->	sudo evemu-describe
@@ -10,11 +10,37 @@
 # 03/26/2024 - git repo
 #
 
-[[ "$HOSTNAME" == "skull" ]] && device=/dev/input/event6 && echo $device
-[[ "$HOSTNAME" == "xps9550" ]] && device=/dev/input/event4 && echo $device
-inputfile=/home/user/data/player_cmds/keepalive.txt
+inputfile=~/etc/player_cmds/keepalive.dat
 ls -l $inputfile
 start=$(date)
+
+# Functions
+function test_input_device() {
+    local device="$1"
+    evemu-event "$device" --type EV_KEY --code KEY_Y --value 1 --sync
+    evemu-event "$device" --type EV_KEY --code KEY_Y --value 0 --sync
+}
+
+function set_keyboard_input {
+    # Iterate over /dev/input/event# devices
+    for device in /dev/input/event{4,5,6,7,8,9}; do
+        # Test input device
+        if test_input_device "$device"; then
+            printf "\t"
+            read -rp "$device? (press Enter): " choice
+            case $choice in
+                [Yy]* )
+                KEYBOARD="$device"
+                return
+                ;;
+                * )
+                ;;
+            esac
+        fi
+    done
+    echo "No input detected on any device."
+    exit 1
+}
 
 function press {
 	[ "$SHIFT" == "" ] || evemu-event ${device} --type EV_KEY --code $SHIFT --value 1 --sync
@@ -157,22 +183,22 @@ function progress_bar () {
 
 ### Error Check
 [ "$1" != "" ] && echo "Device: $device" && $device = $1
-#[ ! -f $inputfile ] && echo "Error: Input file not found" && exit 1
 [ $EUID -ne 0 ] && echo "Error: This script must be run as root" && exit 1
 [ ! -x "$(command -v evemu-event)" ] && echo "Error: evemu-event not installed. Exiting." && exit 1
 
-### Select Screen Message
-clear
-figlet KEEPALIVE...
-figlet STARTING!
-printf " Find Device ->	sudo evemu-describe\n"
-printf "\n\n>>>  EVEMU Keyboard player starting. Select window... "
-printf "5" && sleep 1
-printf "\b4" && sleep 1
-printf "\b3" && sleep 1
-printf "\b2" && sleep 1
-printf "\b1" && sleep 1
-printf "\bSTARTING\n" && sleep 1
+function countdown {
+    printf "\n\n>>>  EVEMU Keyboard player starting. Select window... "
+    printf "5" && sleep 1
+    printf "\b4" && sleep 1
+    printf "\b3" && sleep 1
+    printf "\b2" && sleep 1
+    printf "\b1" && sleep 1
+    printf "\b \n\n"
+}
+
+# Execute
+set_keyboard_input
+countdown
 
 ### Continuous Play 
 while :

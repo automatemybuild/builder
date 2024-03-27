@@ -12,8 +12,8 @@ dim='\e[2m'
 dimoff='\e[22m'
 
 [[ -z $1 ]] && index_card='default' || index_card="${1}"
-remote_dir=/opt/diskstation/common/data/cards
-local_dir=~/Documents/index_cards
+remote_dir=/opt/diskstation/common/documents/cards
+local_dir=~/Documents/cards
 outfile=~/log/icards.rsync.log
 [[ ! -d $local_dir ]] && mkdir -p ${local_dir} && rsync -rtuv ${remote_dir}/* ${local_dir}
 [[ ! -d ~/log ]] && mkdir -p ~/log

@@ -4,6 +4,7 @@
 #
 # 03/28/2020 - Added logic for updating if NAS mount is present
 # 02/10/2021 - Updated to remove local documents from files mirrored
+# 03/26/2024 - git update
 
 function error_check {
 	[ ! -x "$(command -v rsync)" ] && echo "ERROR: rsync command on installed\n\n" && sudo yum -y install rsync
@@ -29,28 +30,13 @@ function update_local {
 	touch $last
 }
 
-local_dir=$HOME/bin
-remote_dir=/opt/diskstation/common/bin/./
+local_dir=$HOME/Documents
+remote_dir=/opt/diskstation/common/documents/./
 [ -d $remote_dir ] && error_check
 [ -d $remote_dir ] && update_local
 
-local_dir=$HOME/nastools
-remote_dir=/opt/diskstation/common/nastools/./
-[ -d $remote_dir ] && error_check
-[ -d $remote_dir ] && update_local
-
-local_dir=$HOME/Documents/notes
-remote_dir=/opt/diskstation/emiller/notes/./
-[ -d $remote_dir ] && error_check
-[ -d $remote_dir ] && update_local
-
-local_dir=$HOME/data
-remote_dir=/opt/diskstation/common/data/./
-[ -d $remote_dir ] && error_check
-[ -d $remote_dir ] && update_local
-
-local_dir=$HOME/dotfiles
-remote_dir=/opt/diskstation/common/dotfiles/./
+local_dir=$HOME/etc
+remote_dir=/opt/diskstation/common/etc/./
 [ -d $remote_dir ] && error_check
 [ -d $remote_dir ] && update_local
 
@@ -58,8 +44,5 @@ remote_dir=/opt/diskstation/emiller/.keepass/./
 [ ! -d $HOME/.keepass ] && printf "Info: Creating .keepass directory\n\n" && mkdir -p $HOME/.keepass 
 [ -d $remote_dir ] && \
 	rsync -avzuh --chmod=500 --chown=user:user /opt/diskstation/emiller/keepass/master_database.kdbx $HOME/.keepass/
-
-local_dir=$HOME/Documents/documents
-[ -d $local_dir ] && chmod 700 -R $local_dir && rm -rf $local_dir && echo "$local_dir REMOVED" 
 
 date > $HOME/.lastmirror

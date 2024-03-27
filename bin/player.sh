@@ -2,9 +2,10 @@
 #
 # 07/31/2019 - converted key lookup to function added random file player
 # 02/06/2024 - added set_keyboard_input
+# 03/26/2024 - git update
 
 # Variables
-random=/opt/diskstation/common/data/player_cmds/unixcmd*
+random=$HOME/etc/player_cmds/unixcmd*
 count=3
 start=$(date)
 

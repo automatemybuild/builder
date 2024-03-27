@@ -1,4 +1,8 @@
 #!/bin/bash
+# 
+# fix_docker - rebuild
+#
+
 YELLOW='\033[0;33m'                                                             
 WHITE='\033[0;37m'                                                              
 NC='\033[0m' # No Color                                                         

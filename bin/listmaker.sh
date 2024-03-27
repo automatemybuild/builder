@@ -8,7 +8,7 @@
 # 
 store=${1:-"grocery"}
 line="===============================       "
-store_isles=/opt/diskstation/common/data/shopping_lists/"${store}".*
+store_isles=/opt/diskstation/common/etc/shopping_lists/"${store}".*
 shopping_list=/tmp/shopping.list.txt
 [[ -f $shopping_list ]] && rm $shopping_list
 printf "\n${0} [STORE default=grocery]\nUsing: ${store_isles}\nShopping list contains `cat $store_isles | wc -l` items.\n\n"

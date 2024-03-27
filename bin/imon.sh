@@ -3,11 +3,13 @@
 # imon - Ping list of addresses
 # Usage: imon.sh [seconds]
 #
+# 03/26/2024 - git update
+#
 red='\e[1;41m'
 green='\e[1;32m'
 normal='\e[0m'
 reverse='\e[7m'
-list=$HOME/data/hostlists/imon.address.txt
+list=~/etc/hostlist/imon
 [[ -n $1 ]] && seconds=$1 || seconds=8
 
 while true; do

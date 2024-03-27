@@ -1,7 +1,10 @@
 #!/usr/bin/env bash
 #
+# type.sh - type text file into VI editor on a remote session like a human
+#
 # 10/25/2023 - copies a text file to a remote system by typing file into a VIM sessions that it opens and saves 
 # 02/06/2024 - added set keyboard input
+# 03/26/2024 - git update
 #
 # Find Device: sudo evemu-describe
 

@@ -1,6 +1,10 @@
 #!/bin/bash
+#
+# update.sh - general purpose package update tool with options
+#
 # 06/26/2023 - add update_os_packages, docker update, and error checks
 # 08/19/2023 - added kill all for snap
+# 03/26/2024 - git update
 
 YELLOW='\033[0;33m'
 WHITE='\033[0;37m'

@@ -1,6 +1,7 @@
 export VISUAL=vim
 export EDITOR=vim
 # Banner
+[ -x "$(command -v neofetch)" ] && neofetch
 [ -x "$(command -v figlet)" ] && hostname | dd conv=ucase status=none | figlet
 # Information
 [ -f ~/.lastpatch ] && printf "Last patch: `cat ~/.lastpatch`  "

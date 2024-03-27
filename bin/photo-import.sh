@@ -2,9 +2,8 @@
 #
 # photo-import.sh - Copy JPG and RAW photos from SD DCIM to local directory removing source file from SD
 #
-# Version: 0.1.0 Created
-# Version: 0.1.1 05/31/2022 - Added MP4 video clips
-# Version: 0.1.2 08/28/2022 - updated remote_dir (sd) path to include path for video
+# 05/31/2022 - Added MP4 video clips
+# 08/28/2022 - updated remote_dir (sd) path to include path for video
 
 remote_dir=/media/user/disk/DCIM/./
 remote_vid_dir=/media/user/disk/PRIVATE/M4ROOT/./

@@ -1,10 +1,10 @@
 #!/bin/bash
 #
-# notes.sh [match] - Create a menu index of available notes.txt files -EM
+# notes.sh [match] - Create a menu index of available notes.txt files
 #
 
 [[ -z "$1" ]]; match="*$1"
-path="/opt/diskstation/emiller/notes"
+path="/opt/diskstation/documents/notes"
 [[ ! -d $path ]] && notice="($path is not available. Using local copy)" && path="$HOME/Documents/notes"
 shopt -s nullglob sourcepath
 options=($path/*/$match*.txt)
