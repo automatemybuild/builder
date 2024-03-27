@@ -25,14 +25,23 @@ sudo apt install -y libavcodec-extra libdvd-pkg dpkg-reconfigure libdvd-pkg
 # Applications (gnome-tweaks, chrome, hexchat, quodlibet, shotwell, snapd, vlc)
 sudo apt install -y bleachbit
 sudo apt install -y gnome-tweaks
-sudo apt install -y gnome-shell-extensions
 sudo apt install -y google-chrome-stable
-sudo apt install -y hexchat
 sudo apt install -y nautilus-admin
-sudo apt install -y quodlibet
 sudo apt install -y shotwell
 sudo apt install -y snapd
 sudo apt install -y vlc
+# Flatpak (get install commands from https://flathub.org to insure validated source only)
+flatpak install flathub org.keepassxc.KeePassXC
+flatpak install flathub io.github.Hexchat
+flatpak install flathub io.github.quodlibet.QuodLibet
+flatpak install flathub io.github.quodlibet.ExFalso
+flatpak install flathub com.discordapp.Discord
+flatpak install flathub org.gimp.GIMP
+flatpak install flathub com.github.tchx84.Flatseal
+flatpak install flathub org.gnome.Extensions
+flatpak install flathub com.slack.Slack
+flatpak install flathub com.github.iwalton3.jellyfin-media-player
+flatpak install flathub org.kde.kmahjongg
 # Brother (HL-L6200DW) printer driver
 install_printer_driver
 # BASH
