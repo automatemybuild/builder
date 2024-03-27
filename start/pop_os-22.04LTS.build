@@ -23,6 +23,7 @@ common_package_installs
 # Multimedia Codecs
 sudo apt install -y libavcodec-extra libdvd-pkg dpkg-reconfigure libdvd-pkg
 # Applications (gnome-tweaks, chrome, hexchat, quodlibet, shotwell, snapd, vlc)
+sudo apt install -y bleachbit
 sudo apt install -y gnome-tweaks
 sudo apt install -y gnome-shell-extensions
 sudo apt install -y google-chrome-stable
@@ -48,6 +49,7 @@ sudo mount -a
 sudo apt install -y qemu-kvm libvirt-clients libvirt-daemon-system bridge-utils virt-manager libvirt-daemon ovmf gnome-boxes
 sudo adduser user libvirt
 sudo adduser user libvirt-qemu
+kvm_restore
 # Security
 ufw_enable
 # End - Reboot

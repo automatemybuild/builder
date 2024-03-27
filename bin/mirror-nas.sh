@@ -40,6 +40,16 @@ remote_dir=/opt/diskstation/common/etc/./
 [ -d $remote_dir ] && error_check
 [ -d $remote_dir ] && update_local
 
+local_dir=$HOME/.ssh
+remote_dir=/opt/diskstation/common/ssh/./
+[ -d $remote_dir ] && error_check
+[ -d $remote_dir ] && update_local
+
+local_dir=$HOME/.config
+remote_dir=/opt/diskstation/common/config/./
+[ -d $remote_dir ] && error_check
+[ -d $remote_dir ] && update_local
+
 remote_dir=/opt/diskstation/emiller/.keepass/./
 [ ! -d $HOME/.keepass ] && printf "Info: Creating .keepass directory\n\n" && mkdir -p $HOME/.keepass 
 [ -d $remote_dir ] && \

@@ -189,4 +189,17 @@ function install_printer_driver {
     echo "==========> Brother hl-l6200dw"
     sudo ./$DRIVER
 }
+function kvm_restore {
+    KVM_IMG=/opt/diskstation/backup/$HOSTNAME/kvm/images
+    KVM_XML=/opt/diskstation/backup/$HOSTNAME/kvmxml
+    [ ! -d $KVM_IMG ] && echo "KVM Images not found $KVM_IMG" && return 1
+	ls $KVM_IMG
+    sudo rsync --info=progress2 $KVM_IMG/* /var/lib/libvirt/images/ 
+    [ ! -d $KVM_XML ] && echo "KVM XML not found $KVM_IMG" && return 1
+    sudo rsync --info=progress2 $KVM_XML/* /etc/libvirt/qemu/
+    sudo sudo virsh list
+    for i in $KVM_XML/*.xml; do sudo virsh define --file $i; done && \
+    sudo sudo virsh list
+    #sudo setfacl -m u:qemu:rx /home/user
+}
 echo "builder_functions.sh file sourced..."
