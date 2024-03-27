@@ -1,0 +1,30 @@
+Misc tweaks and settings
+Reorder Favorites on Dock
+
+Go through all programs
+
+History search in terminal using page up and page down
+sudo nano /etc/inputrc
+# Uncomment "\e[5~": history-search-backward
+# Uncomment "\e[6~": history-search-forward
+
+Go through Settings
+
+    Turn off bluetooth
+    Change wallpaper
+    Select Light Theme
+    Dock
+        Deactivate Extend dock to the edges of the screen
+        Dock visibility: intelligently hide
+        Show Dock on Display: All Displays
+    Automatically delete recent files and trash
+    Turn of screen after 15 min
+    Turn on night mode
+    Add online account for Nextcloud
+    Deactivate system sounds, mute mic
+    Turn of suspend, turn on shutdown for power button
+    Turn on natural scroll for mouse touchpad
+    Go through keyboard shortcuts and adapt, I also add a custom one for xkill on CTRL+ALT+X
+    Check region and language, remove unnecessary languages, then update
+    Change clock to 24h format
+
