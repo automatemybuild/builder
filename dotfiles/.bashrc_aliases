@@ -11,5 +11,5 @@ alias l='ls -CF'
 alias h='~/bin/icards.sh'
 alias zz='~/bin/update.sh -s'
 # git
+alias gg='~/bin/git_update.sh'
 alias gp='cd /opt/diskstation/common/git_master/builder; git add *; git commit -m `date '+%y%m%d'`; git push -u origin main'
-alias gg='cd ~/bin/git_update.sh'
