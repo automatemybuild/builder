@@ -8,11 +8,11 @@ function error_check {
 	[ ! -d $remote_dir ] && printf "ERROR: $remote_dir does not exist or not mounted.\n\n"
 }
 
-function update_local {
+function update_local () {
 	[ ! -d $local_dir ] && mkdir -p $local_dir
 	if [ -z "$(find $remote_dir -maxdepth 0 -type d -empty 2>/dev/null)" ]; then
 		printf "INFO: rsync $remote_dir to $local_dir...\n\n"
-		rsync -avhRm $remote_dir $local_dir
+		rsync -avhRm $1 $remote_dir $local_dir
 	fi
 }
 
@@ -29,12 +29,12 @@ remote_dir=/opt/diskstation/common/etc/./
 local_dir=$HOME/scripts
 remote_dir=/opt/diskstation/common/scripts/./
 [ -d $remote_dir ] && error_check
-[ -d $remote_dir ] && update_local
+[ -d $remote_dir ] && update_local --exclude="old"
 
 local_dir=$HOME/.ssh
 remote_dir=/opt/diskstation/common/ssh/./
 [ -d $remote_dir ] && error_check
-[ -d $remote_dir ] && update_local
+[ -d $remote_dir ] && update_local --chmod=700
 
 local_dir=$HOME/.config
 remote_dir=/opt/diskstation/common/config/./
