@@ -1,0 +1,9 @@
+export VISUAL=vim
+export EDITOR=vim
+# Banner
+[ -x "$(command -v figlet)" ] && hostname | dd conv=ucase status=none | figlet
+# Information
+[ -f ~/.lastpatch ] && printf "Last patch: `cat ~/.lastpatch`  "
+[ -f ~/.lastbackup ] && printf "Last backup: `cat ~/.lastbackup`"
+echo
+[ -x "$(command -v ~/bin/health2.sh)" ] && ~/bin/health2.sh

@@ -1,0 +1,14 @@
+# enable color support of ls and also add handy aliases
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+# shortcuts for common commands
+alias h='/home/user/bin/icards.sh'
+alias kp='/home/user/bin/KeePassXC-2.6.0-x86_64.AppImage > /dev/null 2>&1'
+alias mm='/home/user/bin/mirror-nas.sh'
+alias zz='/home/user/bin/update.sh -s'
