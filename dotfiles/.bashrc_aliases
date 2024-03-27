@@ -8,9 +8,8 @@ alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
 # shortcuts for common commands
-alias h='/home/user/bin/icards.sh'
-alias kp='/home/user/bin/KeePassXC-2.6.0-x86_64.AppImage > /dev/null 2>&1'
-alias zz='/home/user/bin/update.sh -s'
+alias h='~/bin/icards.sh'
+alias zz='~/bin/update.sh -s'
 # git
 alias gp='cd /opt/diskstation/common/git_master/builder; git add *; git commit -m `date '+%y%m%d'`; git push -u origin main'
-alias gg='cd ~/git/builder; git pull https://github.com/automatemybuild/builder'
+alias gg='cd ~/bin/git_update.sh'

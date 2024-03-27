@@ -8,7 +8,7 @@ function error_check {
 	[ ! -d $source_dir ] && printf "ERROR: $source_dir does not exist or not mounted.\n\n"
 }
 
-function update_local {
+function update_local () {
 	[ ! -d $local_dir ] && printf "Creating $local_dir\n\n" && mkdir -p $local_dir
 	if [ -z "$(find $source_dir -maxdepth 0 -type d -empty 2>/dev/null)" ]; then
 		printf "INFO: rsync $source_dir to $local_dir...\n\n"
@@ -23,7 +23,7 @@ cd ~/git/builder; git pull https://github.com/automatemybuild/builder
 local_dir=~/bin
 source_dir=~/git/builder/bin/./
 [ -d $source_dir ] && error_check
-[ -d $source_dir ] && update_local
+[ -d $source_dir ] && update_local --delete
 
 local_dir=~/nastools
 source_dir=~/git/builder/nastools/./
