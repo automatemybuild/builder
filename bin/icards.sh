@@ -25,7 +25,8 @@ function display_card () {
   header=$(printf '\r%*s\r\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -)
   line=$(printf '\r%*s\n' "${COLUMNS:-$(tput cols)}" '' | tr ' ' -)
   printf "${blue}${header}--${reverse} ${1} ${normal}\n"
-  cat ${index_card_file} | grep -v ^# | GREP_COLOR='mt=01;32'  grep --color -E '(^|###.*|---.*)'
+  export GREP_COLOR='1;37;42'
+  cat ${index_card_file} | grep -v ^# | grep --color -E '(^|###.*|---.*)'
   printf "${blue}${line}${normal}\n"
 }
 function index_card_menu {
