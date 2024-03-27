@@ -35,6 +35,7 @@ local_dir=$HOME/.ssh
 remote_dir=/opt/diskstation/common/ssh/./
 [ -d $remote_dir ] && error_check
 [ -d $remote_dir ] && update_local --chmod=700
+chmod 750 $HOME/.ssh/*.pub
 
 local_dir=$HOME/.config
 remote_dir=/opt/diskstation/common/config/./

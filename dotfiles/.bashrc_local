@@ -1,5 +1,6 @@
 export VISUAL=vim
 export EDITOR=vim
+export PATH=$PATH:~/bin
 # Banner
 [ -x "$(command -v neofetch)" ] && neofetch
 [ -x "$(command -v figlet)" ] && hostname | dd conv=ucase status=none | figlet

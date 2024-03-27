@@ -184,8 +184,8 @@ rootcopyfiles systemfiles
 [ -d $HOME/.sabnzbd ] &&		usercopyfiles sabnzbdplus
 [ -d /var/www ] &&			rootcopyfiles www
 [ -f /etc/rsyslog.conf ] &&		rootcopyfiles rsyslog
-[ -d /var/lib/libvirt/images ] &&	rootcopyfiles kvm
 [ ! -z 'sudo ls /etc/libvirt/qemu/*' ] &&	rootcopyfiles kvmxml
+[ -d /var/lib/libvirt/images ] &&	rootcopyfiles kvm
 last=$bkup/RSYNC_LAST_$(date +%Y%m%d)
 [ -f $bkup/RSYNC_LAST* ] && rm -f $bkup/RSYNC_LAST*
 touch $last
