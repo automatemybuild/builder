@@ -5,7 +5,6 @@
 4. git pull https://github.com/automatemybuild/builder
 5. cd ~/git/builder/start
 6. bash builder.sh pop_os-22.04LTS.build
-7. reboot
 7. bash ~/git/builder/start/install.sh
 9. bash ~/bin/mirror-nas.sh
 
