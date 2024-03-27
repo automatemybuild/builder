@@ -31,17 +31,17 @@ sudo apt install -y shotwell
 sudo apt install -y snapd
 sudo apt install -y vlc
 # Flatpak (get install commands from https://flathub.org to insure validated source only)
-flatpak install flathub org.keepassxc.KeePassXC
-flatpak install flathub io.github.Hexchat
-flatpak install flathub io.github.quodlibet.QuodLibet
-flatpak install flathub io.github.quodlibet.ExFalso
-flatpak install flathub com.discordapp.Discord
-flatpak install flathub org.gimp.GIMP
-flatpak install flathub com.github.tchx84.Flatseal
-flatpak install flathub org.gnome.Extensions
-flatpak install flathub com.slack.Slack
-flatpak install flathub com.github.iwalton3.jellyfin-media-player
-flatpak install flathub org.kde.kmahjongg
+flatpak install -y flathub org.keepassxc.KeePassXC
+flatpak install -y flathub io.github.Hexchat
+flatpak install -y flathub io.github.quodlibet.QuodLibet
+flatpak install -y flathub io.github.quodlibet.ExFalso
+flatpak install -y flathub com.discordapp.Discord
+flatpak install -y flathub org.gimp.GIMP
+flatpak install -y flathub com.github.tchx84.Flatseal
+flatpak install -y flathub org.gnome.Extensions
+flatpak install -y flathub com.slack.Slack
+flatpak install -y flathub com.github.iwalton3.jellyfin-media-player
+flatpak install -y flathub org.kde.kmahjongg
 # Brother (HL-L6200DW) printer driver
 install_printer_driver
 # BASH
