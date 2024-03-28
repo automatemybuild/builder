@@ -10,3 +10,7 @@
 
 # Builder Push
 git add *; git commit -m `date '+%y%m%d'`; git push -u origin main
+
+# Setup
+eval `ssh-agent`
+ssh-add ~/.ssh/id_rsa
