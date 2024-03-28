@@ -48,6 +48,19 @@ function flatpak_update {
         echo "flatpak not installed"
     fi
 }
+function flatpak_package_installs {
+    flatpak install -y flathub org.keepassxc.KeePassXC
+    flatpak install -y flathub io.github.Hexchat
+    flatpak install -y flathub io.github.quodlibet.QuodLibet
+    flatpak install -y flathub io.github.quodlibet.ExFalso
+    flatpak install -y flathub com.discordapp.Discord
+    flatpak install -y flathub org.gimp.GIMP
+    flatpak install -y flathub com.github.tchx84.Flatseal
+    flatpak install -y flathub org.gnome.Extensions
+    flatpak install -y flathub com.slack.Slack
+    flatpak install -y flathub com.github.iwalton3.jellyfin-media-player
+    flatpak install -y flathub org.kde.kmahjongg
+}
 function common_package_installs {
     [[ -z $pkgmgr ]] && packagemgr
     echo "Common packages: vim, tree, htop.wavemon, nmap, iperf3, iftop, nethogs, inxi, evemu, tmux, geany, gimp, lnav, figlet, xdotool, sysstat"
@@ -82,29 +95,24 @@ function common_package_installs {
 	[ ! -x "$(command -v xdotool)" ] && header "install xdotool" && sudo ${pkgmgr} -y install xdotool
 }
 function nfs_mounts_points {
-    MOUNT="/opt/diskstation"
-    NAS="192.168.0.253:/volume1"
-    [[ "$(read -e -p 'backup? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p $MOUNT/backup && \
-    sudo sh -c 'echo "$NAS/backup $MOUNT/backup nfs defaults 0 0" >> /etc/fstab'
-    [[ "$(read -e -p 'common? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p $MOUNT/common && \
-    sudo sh -c 'echo "$NAS/common $MOUNT/common nfs defaults 0 0" >> /etc/fstab'
-    [[ "$(read -e -p 'emiller? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p $MOUNT/emiller && \
-    sudo sh -c 'echo "$NAS/emiller $MOUNT/emiller nfs defaults 0 0" >> /etc/fstab'
-    [[ "$(read -e -p 'jenn_folders? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p $MOUNT/jenn_folders && \
-    sudo sh -c 'echo "$NAS/jenn_folders $MOUNT/jenn_folders nfs defaults 0 0" >> /etc/fstab'
-    [[ "$(read -e -p 'media? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p $MOUNT/media && \
-    sudo sh -c 'echo "$NAS/media $MOUNT/media nfs defaults 0 0" >> /etc/fstab'
-    [[ "$(read -e -p 'music? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p $MOUNT/music && \
-    sudo sh -c 'echo "$NAS/music $MOUNT/music nfs defaults 0 0" >> /etc/fstab'
-    [[ "$(read -e -p 'photos? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p $MOUNT/photos && \
-    sudo sh -c 'echo "$NAS/photos $MOUNT/photos nfs defaults 0 0" >> /etc/fstab'
-    [[ "$(read -e -p 'tmp? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p $MOUNT/tmp && \
-    sudo sh -c 'echo "$NAS/tmp $MOUNT/tmp nfs defaults 0 0" >> /etc/fstab'
-    [[ "$(read -e -p 'Review & Edit /etc/fstab? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo vi /etc/fstab
-    echo "Running command: systemctl daemon-reload..."
+	[[ "$(read -e -p 'backup? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p /opt/diskstation/backup && \
+		sudo sh -c 'echo "192.168.0.253:/volume1/backup /opt/diskstation/backup nfs defaults 0 0" >> /etc/fstab'
+	[[ "$(read -e -p 'common? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p /opt/diskstation/common && \
+		sudo sh -c 'echo "192.168.0.253:/volume1/common /opt/diskstation/common nfs defaults 0 0" >> /etc/fstab'
+	[[ "$(read -e -p 'emiller? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p /opt/diskstation/emiller && \
+		sudo sh -c 'echo "192.168.0.253:/volume1/emiller /opt/diskstation/emiller nfs defaults 0 0" >> /etc/fstab'
+	[[ "$(read -e -p 'jenn_folders? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p /opt/diskstation/jenn_folders && \
+		sudo sh -c 'echo "192.168.0.253:/volume1/jenn_folders /opt/diskstation/jenn_folders nfs defaults 0 0" >> /etc/fstab'
+	[[ "$(read -e -p 'media? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p /opt/diskstation/media && \
+		sudo sh -c 'echo "192.168.0.253:/volume1/media /opt/diskstation/media nfs defaults 0 0" >> /etc/fstab'
+	[[ "$(read -e -p 'music? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p /opt/diskstation/music && \
+		sudo sh -c 'echo "192.168.0.253:/volume1/music /opt/diskstation/music nfs defaults 0 0" >> /etc/fstab'
+	[[ "$(read -e -p 'photos? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p /opt/diskstation/photos && \
+		sudo sh -c 'echo "192.168.0.253:/volume1/photos /opt/diskstation/photos nfs defaults 0 0" >> /etc/fstab'
+	[[ "$(read -e -p 'tmp? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p /opt/diskstation/tmp && \
+		sudo sh -c 'echo "192.168.0.253:/volume1/tmp /opt/diskstation/tmp nfs defaults 0 0" >> /etc/fstab'
     sudo systemctl daemon-reload
-    [[ "$(read -e -p 'Run sudo mount -a? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mount -a
-    ls -l $MOUNT
+    ls -l /opt/diskstation
 }
 function bashrc_update {
     printf '\n# Source all .bashrc_FILES\nfor f in ~/.bashrc_*; do source $f; done\n' >> ~/.bashrc
@@ -193,6 +201,8 @@ function install_printer_driver {
 function kvm_restore {
     KVM_IMG=/opt/diskstation/backup/$HOSTNAME/kvm/images
     KVM_XML=/opt/diskstation/backup/$HOSTNAME/kvmxml
+    sudo chmod -R a+r $KVM_IMG
+    sudo chmod -R a+r $KVM_XML
     [ ! -d $KVM_IMG ] && echo "KVM Images not found $KVM_IMG" && return 1
 	ls $KVM_IMG
     sudo rsync --info=progress2 $KVM_IMG/* /var/lib/libvirt/images/ 
