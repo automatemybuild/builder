@@ -205,7 +205,7 @@ countdown
 
 # Open VIM with filename
 commands="vim $inputfile
-sleep 1
+ggdG
 :set smartindent&"
 
 # Type from variable
@@ -213,7 +213,8 @@ while IFS= read -r -n1 char; do
     printf "${char}"
     keymap $char
     press  KEY_$char
-    SEC=$(( (RANDOM % 10 ) + 1 )) && sleep 0.00$SEC
+    #SEC=$(( (RANDOM % 10 ) + 1 )) && sleep 0.00$SEC
+    SEC=$(( (RANDOM % 10 ) + 1 )) && sleep 0.0$SEC
     [ "$char" == "ENTER" ] && SEC=$(( (RANDOM % 10 ) + 1 )) && printf "\n" && sleep 0.$SEC
 done <<< "$commands"
 echo "INSERT MODE"; press KEY_I
