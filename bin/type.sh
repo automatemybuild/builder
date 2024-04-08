@@ -83,6 +83,10 @@ function keymap {
             SHIFT=KEY_LEFTSHIFT
             char=APOSTROPHE
         ;;
+        '~')
+            SHIFT=KEY_RIGHTSHIFT
+            char=GRAVE
+        ;;
         "'")
             char=APOSTROPHE
         ;;
