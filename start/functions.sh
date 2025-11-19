@@ -5,6 +5,7 @@
 # Updates:
 # 07/08/2020 - Created to be souced into scripts that require common functions
 # 03/24/2024 - Removed funtions no longer used
+# 11/19/2025 - Added dotfile copy to home
 # 
 
 function header () {
@@ -96,26 +97,33 @@ function common_package_installs {
 }
 function nfs_mounts_points {
 	[[ "$(read -e -p 'backup? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p /opt/diskstation/backup && \
-		sudo sh -c 'echo "192.168.0.253:/volume1/backup /opt/diskstation/backup nfs defaults 0 0" >> /etc/fstab'
+		sudo sh -c 'echo "192.168.3.253:/volume1/backup /opt/diskstation/backup nfs defaults 0 0" >> /etc/fstab'
 	[[ "$(read -e -p 'common? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p /opt/diskstation/common && \
-		sudo sh -c 'echo "192.168.0.253:/volume1/common /opt/diskstation/common nfs defaults 0 0" >> /etc/fstab'
+		sudo sh -c 'echo "192.168.3.253:/volume1/common /opt/diskstation/common nfs defaults 0 0" >> /etc/fstab'
 	[[ "$(read -e -p 'emiller? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p /opt/diskstation/emiller && \
-		sudo sh -c 'echo "192.168.0.253:/volume1/emiller /opt/diskstation/emiller nfs defaults 0 0" >> /etc/fstab'
+		sudo sh -c 'echo "192.168.3.253:/volume1/emiller /opt/diskstation/emiller nfs defaults 0 0" >> /etc/fstab'
 	[[ "$(read -e -p 'jenn_folders? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p /opt/diskstation/jenn_folders && \
-		sudo sh -c 'echo "192.168.0.253:/volume1/jenn_folders /opt/diskstation/jenn_folders nfs defaults 0 0" >> /etc/fstab'
+		sudo sh -c 'echo "192.168.3.253:/volume1/jenn_folders /opt/diskstation/jenn_folders nfs defaults 0 0" >> /etc/fstab'
 	[[ "$(read -e -p 'media? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p /opt/diskstation/media && \
-		sudo sh -c 'echo "192.168.0.253:/volume1/media /opt/diskstation/media nfs defaults 0 0" >> /etc/fstab'
+		sudo sh -c 'echo "192.168.3.253:/volume1/media /opt/diskstation/media nfs defaults 0 0" >> /etc/fstab'
 	[[ "$(read -e -p 'music? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p /opt/diskstation/music && \
-		sudo sh -c 'echo "192.168.0.253:/volume1/music /opt/diskstation/music nfs defaults 0 0" >> /etc/fstab'
+		sudo sh -c 'echo "192.168.3.253:/volume1/music /opt/diskstation/music nfs defaults 0 0" >> /etc/fstab'
 	[[ "$(read -e -p 'photos? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p /opt/diskstation/photos && \
-		sudo sh -c 'echo "192.168.0.253:/volume1/photos /opt/diskstation/photos nfs defaults 0 0" >> /etc/fstab'
+		sudo sh -c 'echo "192.168.3.253:/volume1/photos /opt/diskstation/photos nfs defaults 0 0" >> /etc/fstab'
 	[[ "$(read -e -p 'tmp? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p /opt/diskstation/tmp && \
-		sudo sh -c 'echo "192.168.0.253:/volume1/tmp /opt/diskstation/tmp nfs defaults 0 0" >> /etc/fstab'
+		sudo sh -c 'echo "192.168.3.253:/volume1/tmp /opt/diskstation/tmp nfs defaults 0 0" >> /etc/fstab'
     sudo systemctl daemon-reload
     ls -l /opt/diskstation
 }
 function bashrc_update {
     printf '\n# Source all .bashrc_FILES\nfor f in ~/.bashrc_*; do source $f; done\n' >> ~/.bashrc
+    cp -v ~/git/builder/dotfiles/.* ~
+}
+function bin_dir_add {
+    cp -vr ~/git/builder/bin ~
+}
+function nastools_dir_add {
+    cp -vr ~/git/builder/nastools ~
 }
 function ssh_config {
     sudo apt -y install openssh-server

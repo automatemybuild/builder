@@ -34,6 +34,9 @@ flatpak_package_installs
 install_printer_driver
 # BASH
 bashrc_update
+# Mirror scripts directories
+bin_dir_add
+nastools_dir_ad
 # Security
 ufw_enable
 # End - Reboot
