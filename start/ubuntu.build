@@ -39,5 +39,7 @@ bin_dir_add
 nastools_dir_ad
 # Security
 ufw_enable
+# VPN (needed for PIA on aamd64)
+sudo apt install -y labopengl0
 # End - Reboot
 systemctl reboot
