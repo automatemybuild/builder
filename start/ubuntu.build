@@ -36,7 +36,7 @@ install_printer_driver
 bashrc_update
 # Mirror scripts directories
 bin_dir_add
-nastools_dir_ad
+nastools_dir_add
 # Security
 ufw_enable
 # VPN (needed for PIA on aamd64)
