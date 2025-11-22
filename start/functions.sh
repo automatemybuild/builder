@@ -119,12 +119,6 @@ function bashrc_update {
     printf '\n# Source all .bashrc_FILES\nfor f in ~/.bashrc_*; do source $f; done\n' >> ~/.bashrc
     cp -v ~/git/builder/dotfiles/.* ~
 }
-function bin_dir_add {
-    cp -vr ~/git/builder/bin ~
-}
-function nastools_dir_add {
-    cp -vr ~/git/builder/nastools ~
-}
 function ssh_config {
     sudo apt -y install openssh-server
     [[ ! -f /etc/ssh/sshd_config_orig ]] && sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config_orig && sudo chmod a-w /etc/ssh/sshd_config_orig

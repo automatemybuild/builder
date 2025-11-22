@@ -9,10 +9,6 @@ sudo apt -y dist-upgrade
 sudo apt -y autoremove
 sudo apt -y autoclean
 flatpak update
-# Firmware
-sudo fwupdmgr get-devices
-sudo fwupdmgr get-updates
-sudo fwupdmgr update
 # Common packages (vim, tree, htop.wavemon, nmap, iperf3, iftop, nethogs, inxi, evemu, tmux, etc.)
 common_package_installs
 # Multimedia Codecs
@@ -22,21 +18,16 @@ sudo apt install -y gstreamer1.0-plugins-bad gstreamer1.0-plugins-ugly gstreamer
 sudo apt install -y bleachbit
 sudo apt install -y gnome-tweaks
 sudo apt install -y google-chrome-stable
-sudo apt install -y nautilus-admin
-sudo apt install -y shotwell
-sudo apt install -y snapd
 sudo apt install -y kazam
 sudo apt install -y lynis
+sudo apt install -y nautilus-admin
+sudo apt install -y snapd
 sudo apt install -y vlc
 sudo apt install -y vmware-horizon-client
-flatpak_package_installs
 # Brother (HL-L6200DW) printer driver
 install_printer_driver
 # BASH
 bashrc_update
-# Mirror scripts directories
-bin_dir_add
-nastools_dir_add
 # Security
 ufw_enable
 # VPN (needed for PIA on aamd64)
