@@ -70,13 +70,11 @@ function common_package_installs {
 	[ ! -x "$(command -v evemu-event)" ] && header "install evemu-tools" && sudo ${pkgmgr} -y install evemu-tools
 	[ ! -x "$(command -v exiftool)" ] && header "install libimage-exiftool-perl" && sudo ${pkgmgr} -y install libimage-exiftool-perl
 	[ ! -x "$(command -v fdupes)" ] && header "install fdupes" && sudo ${pkgmgr} -y install fdupes
-	header "install figlet" && sudo ${pkgmgr} -y install figlet
 	[ ! -x "$(command -v gimp)" ] && header "install gimp" && sudo ${pkgmgr} -y install gimp
 	[ ! -x "$(command -v git)" ] && header "install git" && sudo ${pkgmgr} -y install git
 	[ ! -x "$(command -v htop)" ] && header "install htop" && sudo ${pkgmgr} -y install htop
 	[ ! -x "$(command -v identify)" ] && header "install ImageMagick" && sudo ${pkgmgr} -y install ImageMagick
 	[ ! -x "$(command -v iftop)" ] && header "install iftop" && sudo ${pkgmgr} -y install iftop
-	[ ! -x "$(command -v inxi)" ] && header "install inxi" && sudo ${pkgmgr} -y install inxi
 	[ ! -x "$(command -v inxi)" ] && header "install inxi" && sudo ${pkgmgr} -y install inxi
 	[ ! -x "$(command -v iperf3)" ] && header "install iperf3" && sudo ${pkgmgr} -y install iperf3
 	[ ! -x "$(command -v lnav)" ] && header "install lnav" && sudo ${pkgmgr} -y install lnav
@@ -86,14 +84,16 @@ function common_package_installs {
 	[ ! -x "$(command -v nmtui)" ] && header "install nmtui" && sudo ${pkgmgr} -y install nmtui
 	[ ! -x "$(command -v pip)" ] && header "install python3-pip" && sudo ${pkgmgr} -y install python3-pip
 	[ ! -x "$(command -v python3)" ] && header "install python3" && sudo ${pkgmgr} -y install python3
-	header "install python3-tqdm" && sudo ${pkgmgr} -y install python3-tqdm
 	[ ! -x "$(command -v sar)" ] && header "install sysstat" && sudo ${pkgmgr} -y install sysstat
 	[ ! -x "$(command -v tmux)" ] && header "install tmux" && sudo ${pkgmgr} -y install tmux
-	[ ! -x "$(command -v traceroute)" ] && header "install net-tools" && sudo ${pkgmgr} -y install net-tools
+	[ ! -x "$(command -v net-tools)" ] && header "install net-tools" && sudo ${pkgmgr} -y install net-tools
+	[ ! -x "$(command -v traceroute)" ] && header "install traceroute" && sudo ${pkgmgr} -y install traceroute
 	[ ! -x "$(command -v tree)" ] && header "install tree" && sudo ${pkgmgr} -y install tree
 	[ ! -x "$(command -v vim)" ] && header "install vim" && sudo ${pkgmgr} -y install vim
 	[ ! -x "$(command -v wavemon)" ] && header "install wavemon" && sudo ${pkgmgr} -y install wavemon
 	[ ! -x "$(command -v xdotool)" ] && header "install xdotool" && sudo ${pkgmgr} -y install xdotool
+	header "install figlet" && sudo ${pkgmgr} -y install figlet
+	header "install python3-tqdm" && sudo ${pkgmgr} -y install python3-tqdm
 }
 function nfs_mounts_points {
 	[[ "$(read -e -p 'backup? [y/N] '; echo $REPLY)" == [Yy]* ]] && sudo mkdir -p /opt/diskstation/backup && \
