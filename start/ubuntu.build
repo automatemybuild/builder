@@ -23,6 +23,9 @@ sudo apt install -y lynis
 sudo apt install -y nautilus-admin
 sudo apt install -y vlc
 sudo apt install -y vmware-horizon-client
+# VMware Fusion client (copy/paste)
+sudo apt install -y open-vm-tools-desktop
+sudo apt install -y open-vm-tools
 # Brother (HL-L6200DW) printer driver
 install_printer_driver
 # BASH
